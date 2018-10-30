@@ -7,8 +7,7 @@ import geniusapp.SqlConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -717,7 +716,7 @@ public class Homepage1 extends javax.swing.JFrame  {
 
     private void jMenuItemInvoiceMatchingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInvoiceMatchingActionPerformed
         InvoiceMatching _InvoiceMatching=new InvoiceMatching();
-        _InvoiceMatching.show();
+        _InvoiceMatching.setVisible(true);
     }//GEN-LAST:event_jMenuItemInvoiceMatchingActionPerformed
 
     private void jMenuItemSuppPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSuppPaymentsActionPerformed

@@ -176,8 +176,6 @@ public void fillFiields(String Id){
         jLabel2 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         chkIsActive = new javax.swing.JCheckBox();
-        txtPassword1 = new javax.swing.JPasswordField();
-        txtConfirmPassword = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -190,6 +188,8 @@ public void fillFiields(String Id){
         txtQuestion = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         UsersTable = new javax.swing.JTable();
+        txtPassword1 = new javax.swing.JTextField();
+        txtConfirmPassword = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         jButtonEdit = new javax.swing.JButton();
@@ -263,10 +263,10 @@ public void fillFiields(String Id){
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtPassword1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chkIsActive, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                     .addComponent(txtFullNames, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPassword1)
                     .addComponent(txtConfirmPassword))
                 .addGap(65, 65, 65)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,7 +281,7 @@ public void fillFiields(String Id){
                     .addComponent(txtAnswer, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtQuestion, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 994, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,14 +319,14 @@ public void fillFiields(String Id){
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
         );
 
@@ -433,7 +433,7 @@ public void fillFiields(String Id){
             }
             //CryptWithMD5 _CryptWithMD5 = new CryptWithMD5();
 
-            if(Password.isEmpty() || txtConfirmPassword.getText().isEmpty()){
+            if(Password.isEmpty() || ConfirmPassword.isEmpty()){
                 JOptionPane.showMessageDialog(null,"Enter Password To Continue");
                 return;
             }
@@ -579,10 +579,10 @@ public void fillFiields(String Id){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtAnswer;
-    private javax.swing.JPasswordField txtConfirmPassword;
+    private javax.swing.JTextField txtConfirmPassword;
     private javax.swing.JTextField txtEmail1;
     private javax.swing.JTextField txtFullNames;
-    private javax.swing.JPasswordField txtPassword1;
+    private javax.swing.JTextField txtPassword1;
     private javax.swing.JTextField txtQuestion;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTelephone;
