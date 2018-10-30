@@ -15,11 +15,11 @@ import java.sql.Date;
 public class PoItems {
     String UOM,SuppName,SuppEmail,SuppPostal,ShipToname,ShipToEmail,ShipToMobile,ItemDesc;
     float UnitPrice,LineTotal,Tax;
-
+String ComapnyWebsite,   CompanyPhysical;
   
     Date DeliverBy;
 float Qty;
-    public PoItems(String SuppName, String SuppEmail, String SuppPostal, String ShipToname, String ShipToEmail, String ShipToMobile, String ItemDesc, float Qty, float UnitPrice, float LineTotal,Date DeliverBy,float Tax,String UOM) {
+    public PoItems(String SuppName, String SuppEmail, String SuppPostal, String ShipToname, String ShipToEmail, String ShipToMobile, String ItemDesc, float Qty, float UnitPrice, float LineTotal,Date DeliverBy,float Tax,String UOM,String ComapnyWebsite,  String CompanyPhysical) {
         this.SuppName = SuppName;
         this.SuppEmail = SuppEmail;
         this.SuppPostal = SuppPostal;
@@ -34,6 +34,8 @@ float Qty;
         this.DeliverBy=DeliverBy;
         this.Tax=Tax;
         this.UOM=UOM;
+        this.ComapnyWebsite=ComapnyWebsite;
+        this.CompanyPhysical=CompanyPhysical;
     }
   public float getTax() {
         return Tax;
@@ -41,6 +43,22 @@ float Qty;
 
     public void setTax(float Tax) {
         this.Tax = Tax;
+    }
+
+    public String getComapnyWebsite() {
+        return ComapnyWebsite;
+    }
+
+    public void setComapnyWebsite(String ComapnyWebsite) {
+        this.ComapnyWebsite = ComapnyWebsite;
+    }
+
+    public String getCompanyPhysical() {
+        return CompanyPhysical;
+    }
+
+    public void setCompanyPhysical(String CompanyPhysical) {
+        this.CompanyPhysical = CompanyPhysical;
     }
 
     public String getUOM() {

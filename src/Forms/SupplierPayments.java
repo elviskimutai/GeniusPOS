@@ -6,6 +6,7 @@
 package Forms;
 
 import geniusapp.Constants;
+import geniusapp.Decryption;
 import geniusapp.Security;
 import geniusapp.SqlConnection;
 import geniusapp.Supplier;
@@ -171,11 +172,12 @@ public void fillSupliers(){
         jTextFieldAMNT = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButtonSave = new javax.swing.JButton();
+        txtSearch = new javax.swing.JTextField();
+        btnSearchu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SUPPLIER PAYMENTS");
 
-        inventoryReceipt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         inventoryReceipt.setFont(new java.awt.Font("Californian FB", 0, 14)); // NOI18N
         inventoryReceipt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -188,7 +190,7 @@ public void fillSupliers(){
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        inventoryReceipt.setGridColor(new java.awt.Color(204, 255, 255));
+        inventoryReceipt.setGridColor(new java.awt.Color(255, 255, 255));
         inventoryReceipt.setRowHeight(25);
         inventoryReceipt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -328,7 +330,7 @@ public void fillSupliers(){
                     .addComponent(jTextFieldDoCNo)
                     .addComponent(jTextFieldRemarks)
                     .addComponent(jTextFieldDOCType, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +352,7 @@ public void fillSupliers(){
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -393,6 +395,14 @@ public void fillSupliers(){
             }
         });
 
+        btnSearchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Forms/Images/icons8_Search_35px.png"))); // NOI18N
+        btnSearchu.setText("Search");
+        btnSearchu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -400,39 +410,41 @@ public void fillSupliers(){
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearchu, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnSearchu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -614,9 +626,42 @@ public void fillSupliers(){
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldAMNTActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnSearchuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchuActionPerformed
+        SearchPayment(txtSearch.getText());
+    }//GEN-LAST:event_btnSearchuActionPerformed
+
+   public void SearchPayment(String Id){
+    try {
+
+                 PreparedStatement pstmt = con.prepareStatement("{call SearchSupplierPayments(?)}");
+                  pstmt.setString(1, Id);
+                  ResultSet rs=pstmt.executeQuery();
+                   model.setRowCount(0);
+                while(rs.next()){
+                      String DocNo=rs.getNString("DocNo");
+                String Supplier=rs.getNString("Supplier");
+                String PayMode=rs.getNString("PayMode");
+                String InvoiceNo=rs.getNString("InvoiceNumber");
+                Date PaymentDate=rs.getDate("PaymentDate");
+                Double InvoiceAmount=rs.getDouble("InvoiceAmount");
+                Double AmountPaid=rs.getDouble("Amount");
+                 Double Balance=InvoiceAmount-AmountPaid;
+ 
+                
+                model.addRow(new Object[]{DocNo,Supplier, InvoiceNo,PaymentDate,InvoiceAmount,AmountPaid,Balance,PayMode});
+                           
+                 }
+                rs.close();
+                pstmt.close();
+    } catch (Exception e) {
+         Security sec=new Security();
+            sec.setMessage(e.getMessage());
+            sec.setModule("Searching user");
+            sec.setRegSource(_Constants.getRegSource());
+            sec.setUserID(_Constants.getUserId());
+            sec.SaveErrors();
+    }
+}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -652,6 +697,7 @@ public void fillSupliers(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AMNTPaid;
     private com.toedter.calendar.JDateChooser TransDate1;
+    private javax.swing.JButton btnSearchu;
     public javax.swing.JTable inventoryReceipt;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JComboBox jComPayMode;
@@ -677,5 +723,6 @@ public void fillSupliers(){
     private javax.swing.JTextField jTextFieldInvoiceamnt;
     private javax.swing.JTextField jTextFieldRemarks;
     private javax.swing.JTextField jTextFieldbalance;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

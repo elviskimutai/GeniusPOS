@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package geniusapp;
 
 
@@ -20,9 +16,9 @@ import net.proteanit.sql.DbUtils;
  * @author Administrator
  */
 public class User {
-    String UserName,Password,Email,FullNames,EmpNo,Question,Answer,Telephone;
-    Boolean IsActive,SuperUser;
-    Date DOB;
+    String UserName,Password,Email,FullNames,Question,Answer,Telephone;
+    Boolean IsActive;
+    
     static SqlConnection _SqlConnection =new SqlConnection();
      Connection con=_SqlConnection.connect();
 
@@ -58,22 +54,6 @@ public class User {
         this.FullNames = FullNames;
     }
 
-//    public String getIdNo() {
-//        return IdNo;
-//    }
-//
-//    public void setIdNo(String IdNo) {
-//        this.IdNo = IdNo;
-//    }
-
-    public String getEmpNo() {
-        return EmpNo;
-    }
-
-    public void setEmpNo(String EmpNo) {
-        this.EmpNo = EmpNo;
-    }
-
     public String getQuestion() {
         return Question;
     }
@@ -106,59 +86,51 @@ public class User {
         this.IsActive = IsActive;
     }
 
-    public Boolean getSuperUser() {
-        return SuperUser;
-    }
-
-    public void setSuperUser(Boolean SuperUser) {
-        this.SuperUser = SuperUser;
-    }
-
-    public Date getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
-    }
 
     public User() {
         
     }
 
-    public User(String UserName, String Password, String Email, String FullNames,  String EmpNo, String Question, String Answer, String Telephone, Boolean IsActive, Boolean SuperUser, Date DOB) {
+    public User(String UserName, String Password, String Email, String FullNames,   String Question, String Answer, String Telephone, Boolean IsActive) {
         this.UserName = UserName;
         this.Password = Password;
         this.Email = Email;
         this.FullNames = FullNames;
-      //  this.IdNo = IdNo;
-        this.EmpNo = EmpNo;
         this.Question = Question;
         this.Answer = Answer;
         this.Telephone = Telephone;
         this.IsActive = IsActive;
-        this.SuperUser = SuperUser;
-        this.DOB = DOB;
+        
     }
-    
+      public boolean DeleteUser(String UserName){
+        try {
+             PreparedStatement pstmt = con.prepareStatement("{call DeleteUser(?)}");
+                    pstmt.setString(1, UserName);
+                    
+                    pstmt.execute();
+                    pstmt.close();
+                   
+            return true;
+        } catch (Exception e) {
+            System.out.println( e.getMessage() );
+            return false;
+        }
+    }
     public boolean SaveUser(){
         try {
-             PreparedStatement pstmt = con.prepareStatement("{call SaveNewUser(?,?,?,?,?,?,?)}");
+             PreparedStatement pstmt = con.prepareStatement("{call SaveNewUser(?,?,?,?,?,?,?,?)}");
                     pstmt.setString(1, UserName);
-                    pstmt.setString(2, FullNames);
-                   // pstmt.setString(3, EmpNo);
+                    pstmt.setString(2, FullNames);                
                     pstmt.setString(3, Password);
                     pstmt.setString(4, Question);
                     pstmt.setString(5, Answer);
                     pstmt.setString(6, Email);
                     pstmt.setString(7, Telephone);
-                    //pstmt.setBoolean(9, IsActive);
-                   // pstmt.setBoolean(10, SuperUser);
-                   // pstmt.setDate(11, DOB);
+                    pstmt.setBoolean(8, IsActive);
+                
                     pstmt.execute();
                     pstmt.close();
-                    System.out.println( "Saved Succesffuly" );
-
+                   
             return true;
         } catch (Exception e) {
             System.out.println( e.getMessage() );

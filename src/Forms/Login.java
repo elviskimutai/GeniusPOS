@@ -210,18 +210,19 @@ public class Login extends javax.swing.JFrame {
                 Password=jPasswordField1.getText();
         User _User= new User();
         if(_User.ValidateUser(Username,Password)){
-            Homepage1 _Homepage1 =new Homepage1();
-            _Homepage1.show();
-             InetAddress myHost = InetAddress.getLocalHost();
+              InetAddress myHost = InetAddress.getLocalHost();
             String RegSource=myHost.getHostName();               
             Constants _Constants=new Constants();
             _Constants.setUserId(Username);
             _Constants.setRegSource(RegSource);
+            Homepage1 _Homepage1 =new Homepage1();
+            _Homepage1.setVisible(true);
+           
             dispose();
             //JOptionPane.showMessageDialog(null,"Validated");
                  }  
         else{
-            JOptionPane.showMessageDialog(null,"Incorect UserName");
+            JOptionPane.showMessageDialog(null,"Login Failed!! (Incorect UserName/Password)");
         }
      
 //            InetAddress myHost = InetAddress.getLocalHost();

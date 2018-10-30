@@ -249,6 +249,40 @@ static SqlConnection _SqlConnection =new SqlConnection();
           return false;
       }
   }
+     public boolean SaveCustomerPayment(){
+           try {
+           PreparedStatement pstmt = con.prepareStatement("{call SaveCustomerPayments(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+ 
+                    pstmt.setString(1, getDocNo());
+                    pstmt.setString(2, getDocType());
+                    pstmt.setString(3, getSuppCode());
+                    pstmt.setString(4, getInvoiceNumber());
+                //    pstmt.setDouble(5, getInvoiceAmount());
+                  //  pstmt.setDate(6, getInvoiceDate());
+                    pstmt.setDouble(5, getAmount());
+                    pstmt.setString(6, getBatchNo());
+                    pstmt.setString(7, getRefNo());
+                    pstmt.setString(8, getPayMode());
+                     pstmt.setString(9, getBankAccount());
+                  pstmt.setString(10, getRemarks());
+                  pstmt.setString(11, getPaymentStatus());
+                  pstmt.setString(12, _Contants.getRegSource());
+                  pstmt.setString(13, _Contants.getUserId());
+                    pstmt.execute();
+                    pstmt.close();
+                   
+              
+          return true;
+      } catch (Exception e) {
+           Security sec=new Security();
+            sec.setMessage(e.getMessage());
+            sec.setModule("Saving Customers Payments");
+            sec.setRegSource(RegSource);
+            sec.setUserID(UserID);
+            sec.SaveErrors();
+                return false;
+            }
+      }   
      public boolean SaveSupplierPayment(){
            try {
            PreparedStatement pstmt = con.prepareStatement("{call SaveSupplierPayments(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");

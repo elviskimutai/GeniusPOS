@@ -26,6 +26,8 @@ public class PurchaseOrder {
 	Double UnitCost,VAT;
 	Double LineTotal ;
 	Date DeliverBy ;
+            String ComapnyWebsite;
+                String CompanyPhysical;
 static SqlConnection _SqlConnection =new SqlConnection();
      Connection con=_SqlConnection.connect();
 Constants _coConstants=new Constants();
@@ -34,6 +36,22 @@ Constants _coConstants=new Constants();
 
     public Double getVAT() {
         return VAT;
+    }
+
+    public String getComapnyWebsite() {
+        return ComapnyWebsite;
+    }
+
+    public void setComapnyWebsite(String ComapnyWebsite) {
+        this.ComapnyWebsite = ComapnyWebsite;
+    }
+
+    public String getCompanyPhysical() {
+        return CompanyPhysical;
+    }
+
+    public void setCompanyPhysical(String CompanyPhysical) {
+        this.CompanyPhysical = CompanyPhysical;
     }
 
     public void setVAT(Double VAT) {
@@ -163,7 +181,9 @@ public boolean SavePurchaseOrder(){
                   float Tax=((VATValue*UnitPrice)/100)*Qty;
                   float LineTotal=rs.getFloat("LineTotal")+Tax;
                   Date DeliverBy=rs.getDate("DeliverBy");
-           Items.add(new PoItems( SuppName,  SuppEmail,  SuppPostal,  ShipToname,  ShipToEmail, ShipToMobile, ItemDesc, Qty, UnitPrice, LineTotal,DeliverBy,Tax,UOM) );
+                    String ComapnyWebsite=rs.getNString("CompanyWebsite");
+                String CompanyPhysical=rs.getNString("CompanyPhysical");
+           Items.add(new PoItems( SuppName,  SuppEmail,  SuppPostal,  ShipToname,  ShipToEmail, ShipToMobile, ItemDesc, Qty, UnitPrice, LineTotal,DeliverBy,Tax,UOM,ComapnyWebsite,CompanyPhysical) );
             }
               rs.close();
                 pst.close();

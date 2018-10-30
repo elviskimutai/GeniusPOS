@@ -14,11 +14,19 @@ import java.sql.PreparedStatement;
  * @author Administrator
  */
 public class CompanyClass {
-    public String CompayName ,Email ,Telephone,Mobile,Fax ,PostalAdress,PhysicaAdress;
+    public String CompayName ,Email ,Telephone,Mobile,Fax ,PostalAdress,PhysicaAdress,WebUrl;
 static SqlConnection _SqlConnection =new SqlConnection();
      Connection con=_SqlConnection.connect();
 Constants _Contants=new Constants();
     public CompanyClass() {
+    }
+
+    public String getWebUrl() {
+        return WebUrl;
+    }
+
+    public void setWebUrl(String WebUrl) {
+        this.WebUrl = WebUrl;
     }
 
     public String getCompayName() {
@@ -77,7 +85,7 @@ Constants _Contants=new Constants();
         this.PhysicaAdress = PhysicaAdress;
     }
 
-    public CompanyClass(String CompayName, String Email, String Telephone, String Mobile, String Fax, String PostalAdress, String PhysicaAdress) {
+    public CompanyClass(String CompayName, String Email, String Telephone, String Mobile, String Fax, String PostalAdress, String PhysicaAdress,String WebUrl) {
         this.CompayName = CompayName;
         this.Email = Email;
         this.Telephone = Telephone;
@@ -85,10 +93,11 @@ Constants _Contants=new Constants();
         this.Fax = Fax;
         this.PostalAdress = PostalAdress;
         this.PhysicaAdress = PhysicaAdress;
+        this.WebUrl=WebUrl;
     }
     public boolean SaveCompany(){
       try {
-           PreparedStatement pstmt = con.prepareStatement("{call SaveCompany(?,?,?,?,?,?,?)}");
+           PreparedStatement pstmt = con.prepareStatement("{call SaveCompany(?,?,?,?,?,?,?,?)}");
    
                     pstmt.setString(1, CompayName);
                     pstmt.setString(2, Email);
@@ -97,6 +106,7 @@ Constants _Contants=new Constants();
                     pstmt.setString(5, Fax);
                     pstmt.setString(6, PostalAdress);
                     pstmt.setString(7, PhysicaAdress);
+                    pstmt.setString(8, WebUrl);
                   
                   
                     pstmt.execute();

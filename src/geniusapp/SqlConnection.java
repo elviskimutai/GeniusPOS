@@ -17,9 +17,9 @@ public  class SqlConnection {
  public static Connection connect(){
      try{
             String userName = "Guest";
-            String password = "Citimax123";
+            String password = "Shalom123";
           //  String Driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-            String Url="jdbc:sqlserver://CITIMAX;databaseName=GeniusPOS";        
+            String Url="jdbc:sqlserver://Master;databaseName=GeniusPOS";        
                       
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
           // Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver");
